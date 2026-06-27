@@ -1,6 +1,9 @@
 #!/bin/bash
-# Bot ko background mein daalo (pehle start karo)
-python main.py &
 
-# Web server ko foreground mein chalao (port bind karega)
+# Bot ko start karo (stderr aur stdout dono log me dikhega)
+echo "🚀 Starting Telegram Bot (main.py)..."
+python main.py 2>&1 &
+
+# Web server ko foreground me start karo
+echo "🌐 Starting Gunicorn Web Server..."
 gunicorn app:app --bind 0.0.0.0:$PORT
